@@ -17,15 +17,15 @@ public class UnitManager : MonoBehaviour {
 
    private InputReader _reader;
    private MessageBox _textBox;
-   private unitSelection _unitSelection;
+   private UnitSelection _unitSelection;
    private Vector3 _buildingPosition;
    private Quaternion _buildingRotation;
-   private Hello_requester _req;
+   private HelloRequester _req;
     void Start()
     {
-        _reader = GameObject.Find("OSC").GetComponent<Input_reader>();
+        _reader = GameObject.Find("OSC").GetComponent<InputReader>();
         _textBox = GameObject.Find("BuildingMenu").GetComponent<MessageBox>();
-        _unitSelection = GameObject.Find("UnitList").GetComponent<_unitSelection>();
+        _unitSelection = GameObject.Find("UnitList").GetComponent<UnitSelection>();
         buildings = new Dictionary<int, GameObject>();
 
     }
@@ -55,7 +55,7 @@ public class UnitManager : MonoBehaviour {
         {
             if (!buildings.ContainsKey(id))
             {
-                prefab = __unitSelection.activeGameobject;
+                prefab = _unitSelection.activeGameobject;
                 GameObject newBuilding = Instantiate(prefab, transform.position, transform.rotation) as GameObject;
                 newBuilding.name = id.ToString();
                 //newBuilding.transform.localScale = __unitSelection.unitScale;
