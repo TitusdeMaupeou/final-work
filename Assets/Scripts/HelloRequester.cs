@@ -15,13 +15,13 @@ public class HelloRequester : RunAbleThread
     ///     Stop requesting when Running=false.
     /// </summary>
 
-    protected override void Run(string m) 
+    public override void Run() 
     {
         ForceDotNet.Force();
         using (RequestSocket client = new RequestSocket())
         {
             client.Connect("tcp://localhost:5555");
-            client.SendFrame(m);
+            client.SendFrame("parameter");
             string message = null;
             bool gotMessage = false;
              while (Running)

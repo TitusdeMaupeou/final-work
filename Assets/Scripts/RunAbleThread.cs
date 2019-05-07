@@ -8,11 +8,11 @@ public abstract class RunAbleThread
 {
     private readonly Thread _runnerThread;
 
-    protected RunAbleThread(string m)
+    protected RunAbleThread()
     {
         // we need to create a thread instead of calling Run() directly because it would block unity
         // from doing other tasks like drawing game scenes
-        _runnerThread = new Thread(() => Run(m));
+        _runnerThread = new Thread(Run);
     }
 
     protected bool Running { get; private set; }
@@ -22,7 +22,7 @@ public abstract class RunAbleThread
     /// this method terminates in a finite time. You can use Running property (which will be set to false when Stop() is
     /// called) to determine when you should stop the method.
     /// </summary>
-    protected abstract void Run(string m);
+    protected abstract void Run();
 
     public void Start()
     {
