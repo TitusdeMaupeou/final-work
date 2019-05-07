@@ -22,7 +22,7 @@ public abstract class RunAbleThread
     /// this method terminates in a finite time. You can use Running property (which will be set to false when Stop() is
     /// called) to determine when you should stop the method.
     /// </summary>
-    protected abstract void Run();
+    public abstract void Run();
 
     public void Start()
     {

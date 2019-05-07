@@ -15,18 +15,17 @@ public class UnitManager : MonoBehaviour {
    public GameObject[] list;
    public GameObject prefab;
 
-   private InputReader reader;
-   private MessageBox textBox;
-   private UnitSelection unitSelection;
-   private Vector3 buildingPosition;
-   private Quaternion buildingRotation;
-   private RunSim simulation;
-   private HelloRequester req;
+   private InputReader _reader;
+   private MessageBox _textBox;
+   private unitSelection _unitSelection;
+   private Vector3 _buildingPosition;
+   private Quaternion _buildingRotation;
+   private Hello_requester _req;
     void Start()
     {
-        reader = GameObject.Find("OSC").GetComponent<InputReader>();
-        textBox = GameObject.Find("BuildingMenu").GetComponent<MessageBox>();
-        unitSelection = GameObject.Find("UnitList").GetComponent<UnitSelection>();
+        _reader = GameObject.Find("OSC").GetComponent<Input_reader>();
+        _textBox = GameObject.Find("BuildingMenu").GetComponent<MessageBox>();
+        _unitSelection = GameObject.Find("UnitList").GetComponent<_unitSelection>();
         buildings = new Dictionary<int, GameObject>();
 
     }
@@ -40,11 +39,11 @@ public class UnitManager : MonoBehaviour {
 
     void ShowUI()
     {
-        foreach (int id in reader.positions.Keys)
+        foreach (int id in _reader.positions.Keys)
         {
             if (!buildings.ContainsKey(id)) //check if dictionary contains id
             {
-                textBox.Show(); //if not, show UI
+                _textBox.Show(); //if not, show UI
             }
         }
     }
@@ -52,14 +51,14 @@ public class UnitManager : MonoBehaviour {
     //buildings with new marker get instantiated when button is pressed
     public void InstantiateBuildings()
     {
-        foreach (int id in reader.positions.Keys)
+        foreach (int id in _reader.positions.Keys)
         {
             if (!buildings.ContainsKey(id))
             {
-                prefab = unitSelection.activeGameobject;
+                prefab = __unitSelection.activeGameobject;
                 GameObject newBuilding = Instantiate(prefab, transform.position, transform.rotation) as GameObject;
                 newBuilding.name = id.ToString();
-                //newBuilding.transform.localScale = unitSelection.unitScale;
+                //newBuilding.transform.localScale = __unitSelection.unitScale;
                 buildings.Add(id, newBuilding);
             }
         }
@@ -67,24 +66,24 @@ public class UnitManager : MonoBehaviour {
 
     public void MoveBuildings()
     {
-        foreach (int id in reader.positions.Keys)
+        foreach (int id in _reader.positions.Keys)
         {
            if (buildings.ContainsKey(id)) { 
-            buildingPosition.x = reader.positions[id].x;
-            buildingPosition.y = 6.8f;
-            buildingPosition.z = reader.positions[id].y;
-            buildings[id].transform.position = buildingPosition;
+            _buildingPosition.x = _reader.positions[id].x;
+            _buildingPosition.y = 6.8f;
+            _buildingPosition.z = _reader.positions[id].y;
+            buildings[id].transform.position = _buildingPosition;
             }
         }
     }
     public void RotateBuildings()
     {
-        foreach (int id in reader.rotations.Keys)
+        foreach (int id in _reader.rotations.Keys)
         {
             if (buildings.ContainsKey(id))
             {
-                buildingRotation = reader.rotations[id];
-                buildings[id].transform.rotation = buildingRotation;
+                _buildingRotation = _reader.rotations[id];
+                buildings[id].transform.rotation = _buildingRotation;
             }
         }
     }
