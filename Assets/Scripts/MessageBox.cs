@@ -10,6 +10,8 @@ public class MessageBox : MonoBehaviour
     public Button button;
     public Text text;
 
+    private HelloRequester _requester;
+
 
     void Start()
     {
@@ -21,5 +23,9 @@ public class MessageBox : MonoBehaviour
     public void Show()
     {
         screen.SetActive(true);
+    }
+
+    public void SendDataRequest() {
+        _requester.Run(); //get parameter here
     }
 }
