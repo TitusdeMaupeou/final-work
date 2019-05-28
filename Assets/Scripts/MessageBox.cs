@@ -11,7 +11,8 @@ public class MessageBox : MonoBehaviour
     public Text text;
 
     private HelloRequester _requester;
-
+    private HelloClient _client;
+    private DataRequester _dataRequester;
 
     void Start()
     {
@@ -19,13 +20,8 @@ public class MessageBox : MonoBehaviour
         text = GetComponent<Text>();
     }
 
-
     public void Show()
     {
         screen.SetActive(true);
-    }
-
-    public void SendDataRequest() {
-        _requester.Run(); //get parameter here
     }
 }

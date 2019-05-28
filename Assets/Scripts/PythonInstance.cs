@@ -7,7 +7,6 @@ using System;
 using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
 
-
 //Created by Dmitry Pursanov
 //https://medium.com/emoney-engineering/running-python-script-from-c-and-working-with-the-results-843e68d230e5
 public class PythonInstance : MonoBehaviour

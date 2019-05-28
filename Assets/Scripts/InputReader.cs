@@ -5,16 +5,16 @@ using UnityOSC;
 
 public class InputReader : MonoBehaviour {
 
-	public OSCReciever reciever;
-	public OSCBundle bundle;
+	private OSCReciever _reciever;
+	private OSCBundle _bundle;
     public int port = 4646;
     public Dictionary<int, Vector3> positions = new Dictionary<int, Vector3>();
     public Dictionary<int, Quaternion> rotations = new Dictionary<int, Quaternion>();
 
     void Start () {
         Debug.Log("Inputreader started");
-		reciever = new OSCReciever();
-		reciever.Open(port);
+		_reciever = new OSCReciever();
+		_reciever.Open(port);
 	}
 	
 	// Update is called once per frame
@@ -22,13 +22,15 @@ public class InputReader : MonoBehaviour {
 		ReceiveMessages();
 	}
 
-	public void ReceiveMessages() {
-        if (reciever.hasWaitingMessages()) {
+	public List<object> ReceiveMessages() {
+        if (_reciever.hasWaitingMessages()) {
             positions.Clear();
-            OSCMessage msg = reciever.getNextMessage();
+            OSCMessage msg = _reciever.getNextMessage();
             //Debug.Log(string.Format("message received: {0} {1}", msg.Address, msg.Data.ToString()));
-            DataToPosition(msg.Data);      
+            DataToPosition(msg.Data);
+            return msg.Data; 
         }
+        return null;
     }
 
 	private Dictionary<int, Vector3> DataToPosition(List<object> data)

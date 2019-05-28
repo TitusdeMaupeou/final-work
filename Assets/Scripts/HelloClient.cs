@@ -6,8 +6,8 @@ public class HelloClient : MonoBehaviour
 
     private void Start()
     {
-        _helloRequester = new HelloRequester();
-        _helloRequester.Start();
+        // _helloRequester = new HelloRequester();
+        // _helloRequester.Start();
     }
 
     private void OnDestroy()

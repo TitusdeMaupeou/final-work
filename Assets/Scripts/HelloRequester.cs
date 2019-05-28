@@ -14,14 +14,17 @@ public class HelloRequester : RunAbleThread
     ///     Request Hello message to server and receive message back. Do it 10 times.
     ///     Stop requesting when Running=false.
     /// </summary>
+    public HelloRequester(string  a, string m) : base(a) {
 
-    public override void Run() 
+    }
+
+    public override void Run(string m)
     {
         ForceDotNet.Force();
         using (RequestSocket client = new RequestSocket())
         {
             client.Connect("tcp://localhost:5555");
-            client.SendFrame("parameter");
+            client.SendFrame(m);
             string message = null;
             bool gotMessage = false;
              while (Running)

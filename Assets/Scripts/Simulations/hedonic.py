@@ -7,7 +7,7 @@ import orca
 from urbansim.models import RegressionModel
 from urbansim.utils import misc
 
-orca.add_injectable("store", pd.HDFStore(os.path.join(misc.data_dir(), "sanfran_public.h5"), mode="r"))
+orca.add_injectable("store", pd.HDFStore(os.path.join(misc.data_dir(), "titusville.h5"), mode="r"))
 
 @orca.table('buildings')
 def buildings(store):

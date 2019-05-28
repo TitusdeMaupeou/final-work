@@ -1,0 +1,86 @@
+{
+    "buildings": {
+        "residential_units": {
+            "min": 0,
+            "max": 6
+        },
+        "non_residential_sqft": {
+            "min": 0,
+            "max": 4000
+        },
+        "building_sqft": {
+            "min": 0,
+            "max": 4000
+        },
+        "stories": {
+            "min": 0,
+            "max": 4
+        },
+        "building_type_id": {
+            "min": 0,
+            "max": 15
+        },
+        "year_built": {
+            "min": 1900,
+            "max": 2019
+        }
+    },
+    "households": {
+        "residential_sales_price": {
+            "min": 0,
+            "max": 900
+        },
+        "non_residential_rent": {
+            "min": 0,
+            "max": 30
+        },
+        "income": {
+            "min": 500,
+            "max": 27000
+        },
+        "persons": {
+            "min": 1,
+            "max": 3
+        },
+        "tenure": {
+            "min": 1,
+            "max": 3
+        }
+    },
+    "jobs": {
+        "job_category": {
+            "min": 0,
+            "max": 3
+        },
+        "tract": {
+            "min": 5602,
+            "max": 6000
+        },
+        "area": {
+            "min": 100,
+            "max": 200
+        },
+        "acres": {
+            "min": 1,
+            "max": 50
+        }
+    },
+    "zones": {
+        "tract": {
+            "min": 5602,
+            "max": 6000
+        },
+        "area": {
+            "min": 100,
+            "max": 200
+        },
+        "acres": {
+            "min": 1,
+            "max": 50
+        },
+        "gid": {
+            "min": 1,
+            "max": 1
+        }
+    }
+}
